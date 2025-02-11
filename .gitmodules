@@ -1,0 +1,3 @@
+[submodule "external/swift-evolution"]
+	path = external/swift-evolution
+	url = https://github.com/apple/swift-evolution.git
