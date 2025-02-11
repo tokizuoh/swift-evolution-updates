@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 import openai
@@ -12,8 +13,8 @@ def load_prompt():
         return f.read()
 
 
-def save_summary(markdown_text):
-    with open("summary.md", "w", encoding="utf-8") as f:
+def save_summary(file_path, markdown_text):
+    with open(file_path, "w", encoding="utf-8") as f:
         f.write(markdown_text)
 
 
@@ -40,4 +41,11 @@ if __name__ == "__main__":
 
         markdown_output += summary + "\n\n"
 
-    save_summary(markdown_output)
+    year = datetime.now(jst).strftime("%Y")
+    output_dir = f"docs/{year}"
+    os.makedirs(output_dir, exist_ok=True)
+
+    date_str = datetime.now(jst).strftime("%Y%m%d")
+    file_path = f"{output_dir}/{date_str}.md"
+
+    save_summary(file_path, markdown_output)
