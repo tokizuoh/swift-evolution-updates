@@ -1,7 +1,8 @@
-import subprocess
 import os
+import subprocess
 
-class Repository:
+
+class Repository:   
     def __init__(self, repo_dir="swift-evolution", proposals_file_name="proposals"):
         self.repo_dir = repo_dir
         self.proposals_file_name = proposals_file_name

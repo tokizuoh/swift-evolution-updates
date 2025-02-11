@@ -1,5 +1,6 @@
 import openai
 from dotenv import load_dotenv
+
 from repository import Repository
 
 if __name__ == "__main__":
