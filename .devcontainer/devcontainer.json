@@ -5,8 +5,19 @@
     },
     "customizations": {
         "vscode": {
-            "settings": {},
-            "extensions": []
+            "settings": {
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll.ruff": "explicit",
+                        "source.organizeImports.ruff": "explicit"
+                    },
+                    "editor.formatOnSave": true
+                }
+            },
+            "extensions": [
+                "charliermarsh.ruff"
+            ]
         }
     }
 }

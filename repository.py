@@ -2,7 +2,7 @@ import os
 import subprocess
 
 
-class Repository:   
+class Repository:
     def __init__(self, repo_dir="swift-evolution", proposals_file_name="proposals"):
         self.repo_dir = repo_dir
         self.proposals_file_name = proposals_file_name
@@ -11,13 +11,19 @@ class Repository:
         result = subprocess.run(
             ["git", "log", "--name-only", "--pretty=format:", "--", self.proposals_file_name],
             cwd=self.repo_dir,
-            capture_output=True, text=True
+            capture_output=True,
+            text=True,
         )
 
-        changed_files = list(dict.fromkeys([
-            f.strip() for f in result.stdout.split("\n")
-            if f.strip().startswith("proposals/") and f.strip().endswith(".md")
-        ]))
+        changed_files = list(
+            dict.fromkeys(
+                [
+                    f.strip()
+                    for f in result.stdout.split("\n")
+                    if f.strip().startswith("proposals/") and f.strip().endswith(".md")
+                ]
+            )
+        )
 
         proposals = {}
         for proposal_file in changed_files[:num_files]:
